@@ -1,0 +1,16 @@
+- Các bước để khởi chạy trang web Đặt lịch khám bệnh online:
+B1: Tải Visua Studio Code 
+- Truy cập vào đường dẫn để tải Visua studio Code: https://code.visualstudio.com/Download
+- Sau khi tải về ta cứ nhấn next và cài đặt như bình thường
+B2: Cần tải XAMPP về máy 
+- Truy cập đường link để tải Xampp: https://www.apachefriends.org/download.html
+- Sau khi tải về ta cứ nhấn next và cài đặt như bình thường 
+B3: Clone code trên git hub về
+B4:Ta mở XAPP lên nhấn vào start bên phải của Apache và MySQL tiếp theo ta mở 2 thư mục bằng Visua studio Code tức là ta phải mở 2 thư mục bằng 2 Visua Studio khác nhau, 2 thư mục  có 1 thư mục tên là BookingCare là back-end còn lại là thư mục Font-end. Tại thư mục BookingCare ta mở file có tên là .env sau đó đổi PORT = 8000 thành PORT= 80
+sau đó ta mở TERMINAL (CTRL + ~) ở cả trên Viusua studio code của thư mục Back-end lẫn Font-end sau đó nhập vào TERMINAL lệnh  npm start nhập cả 2 bên luôn (bên nào trước cũng được hết). Sau khi nhập xong code sẽ chạy và tự động  mở trình duyệt web lên ta sẽ thấy giao diện trang Web. Nếu chạy lệnh npm start mà thư mục Back-end không hiện  (Backend Nodejs is runing on the port : 8080) thi ta làm bước 5 không thì cứ chạy bình thường (Em xin lỗi thầy do máy em bị lỗi port 80 nên em mới làm bước 5 em nghĩ là máy thầy sẽ không bị lỗi)
+B5:- Mở XAMPP lên và nhấn vào gióng theo hàng ngang Apache và nhấn vào config và sau đó chọn Apche(httpd.conf) khi vào rồi ta nhấn CTRL +f
+để tìm kiếm nhanh ta nhập vào tìm kiếm 80 và thay 80 thành 8081(sẽ có 2 chỗ để thay là  Listen 80 và ServerName localhost:80) do cổng  80 
+của em bị lỗi nên em mới thay thành  cổng  8081 . Sau khi thay xong thì ra lưu lại. Sau đó ta quay lại giao diện chính của XAPP ta tiếp tục nhấn vào config (nó có hình cái cò lê) ở góc phải trên cùng của ứng dụng  sau khi nhấn vào sẽ hiện một hộp thoại ta tiếp tục nhấn vào Service and Port Settings nằm ở phía bên phải dòng thứ 2 từ dưới đếm lên (nó ở bên trên LogOptions) sau đổi cái Main Port từ 80 thành 8081
+sau đó nhấn Save tuy nó hiện bảng thông báo lỗi nhưng vẫn nhấn OK sau đó ra nhấn vào nút lưu 1 lần nữa nó vẫn thông báo lỗi ta vẫn nhấn OK .
+Giờ đây ta đã ở giao diện chính của XAMPP, ta nhấn vào Start phía bên phải của Apache và cũng nhấn vào Start phía bên phải của MySQL
+- Sau khi XAMPP đã chạy ta mở 2 thư mục vừa mới clone trên github về Visua Studio Code (2 thư mục đó có một thưc mục là BookingCare thư mục là bên Back-end , còn thư mục còn lại là thư mục Fontend-ReactJS-QuickStart là thư mục Font-end) tức là thầy phải mở 2 cái Visua studio Code cùng một lúc sau đó cả 2 thư mục để mở TERMINAL lên (nhấn CTRL + ~ để mở TERMINAL) sau đó gõ npm start vào TERMINAL của cả 2 thư mục (gõ bên thư mục nào trước cũng được) sau khi code chạy sẽ tự động bật trình  duyệt và hiện trang web (thư mục Font-end lầm đầu khởi động nên chạy lâu 1 tý tầm 1 phút). Thường thì thư mục font-end sẽ không xảy ra lỗi nhưng nên xem thư mục back-end nếu thư mục back-end xuất hiện  dòng  này (Backend Nodejs is runing on the port : 8080) sau khi chạy thì thì ta chạy thành  công còn ngược  lại thì hiện báo lõi đỏ thì là port 8081 đã có ứng  dụng  khác đang chạy thì lúc này ta vào XAMPP đổi lại port như lúc nãy ta đổi bất kì port nào cũng được không nhất thiết phải  là port 80 hay 8081 khi đổi port ta sẽ chạy lại được 
