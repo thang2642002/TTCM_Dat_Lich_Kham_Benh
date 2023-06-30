@@ -71,9 +71,13 @@ class Login extends Component {
     });
   };
 
-  render() {
-    //JSX
+  handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      this.handleLogin();
+    }
+  };
 
+  render() {
     return (
       <div className="login-backgroud">
         <div className="login-container">
@@ -98,6 +102,7 @@ class Login extends Component {
                   placeholder="Enter your Password"
                   value={this.state.passwword}
                   onChange={(event) => this.handlOnchangePassword(event)}
+                  onKeyDown={(event) => this.handleKeyDown(event)}
                 />
                 <span
                   onClick={() => {
