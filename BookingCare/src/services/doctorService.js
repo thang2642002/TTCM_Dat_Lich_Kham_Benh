@@ -1,5 +1,6 @@
 import { promise, reject } from "bcrypt/promises";
 import db from "../models/index";
+import { raw } from "body-parser";
 
 let getTopDoctorHome = (limitInput) => {
   return new Promise(async (resolve, reject) => {
@@ -63,19 +64,35 @@ let saveDetailInforDoctor = (inputData) => {
       if (
         !inputData.doctorId ||
         !inputData.contentHTML ||
-        !inputData.contentMarkdown
+        !inputData.contentMarkdown ||
+        !inputData.action
       ) {
         resolve({
           errCode: 1,
           errMessage: "Missing parameter",
         });
       } else {
-        await db.Markdown.create({
-          contentHTML: inputData.contentHTML,
-          contentMarkdown: inputData.contentMarkdown,
-          description: inputData.description,
-          doctorId: inputData.doctorId,
-        });
+        if (inputData.action === "CREATE") {
+          await db.Markdown.create({
+            contentHTML: inputData.contentHTML,
+            contentMarkdown: inputData.contentMarkdown,
+            description: inputData.description,
+            doctorId: inputData.doctorId,
+          });
+        } else if (inputData.action === "EDIT") {
+          let doctorMardown = await db.Markdown.findOne({
+            where: { doctorId: inputData.doctorId },
+            raw: false,
+          });
+          if (doctorMardown) {
+            doctorMardown.contentHTML = inputData.contentHTML;
+            doctorMardown.contentMarkdown = inputData.contentMarkdown;
+            doctorMardown.description = inputData.description;
+            doctorMardown.updateAt = new Date();
+            await doctorMardown.save();
+          }
+        }
+
         resolve({
           errCode: 0,
           errMessage: "Save infor doctor succeed!",
