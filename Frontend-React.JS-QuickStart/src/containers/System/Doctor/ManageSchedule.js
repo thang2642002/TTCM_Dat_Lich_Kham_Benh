@@ -125,9 +125,16 @@ class ManageSchedule extends Component {
 
     let res = await saveBulkScheduleDoctor({
       arrSchedule: result,
+      doctorId: selectedDoctor.value,
+      formatedDate: formatedDate,
     });
-    console.log("res: ", res);
-    console.log("result: ", result);
+
+    if (res && res.errCode === 0) {
+      toast.success("Save Infor success");
+    } else {
+      toast.error(" error saveBulkScheduleDoctor");
+      console.log("error saveBulkScheduleDoctor >> error: ", res);
+    }
   };
 
   render() {

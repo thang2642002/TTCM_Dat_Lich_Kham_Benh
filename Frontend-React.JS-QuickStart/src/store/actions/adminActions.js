@@ -299,3 +299,29 @@ export const fetchAllScheduleTime = () => {
     }
   };
 };
+//
+
+export const getDoctorPrice = () => {
+  return async (dispatch, getState) => {
+    try {
+      dispatch({ type: actionTypes.FETCH_DOCTOR_PRICE_START });
+      let res = await getAllcodeService("GENDER");
+      if (res && res.errCode === 0) {
+        dispatch(fetchDoctorPriceSuccess(res.data));
+      } else {
+        dispatch(fetchDoctorPriceFailed());
+      }
+    } catch (e) {
+      dispatch(fetchDoctorPriceFailed());
+      console.log("fetchGenderStart error: ", e);
+    }
+  };
+};
+export const fetchDoctorPriceSuccess = (genderData) => ({
+  type: actionTypes.FETCH_GENDER_SUCCESS,
+  data: genderData,
+});
+
+export const fetchDoctorPriceFailed = () => ({
+  type: actionTypes.FETCH_GENDER_FAILDED,
+});

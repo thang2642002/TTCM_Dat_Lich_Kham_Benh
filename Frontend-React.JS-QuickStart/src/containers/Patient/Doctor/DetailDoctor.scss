@@ -29,6 +29,20 @@
     }
   }
 
+  .schedule-doctor {
+    margin: 0 175px;
+    display: flex;
+    min-height: 200px;
+    padding-bottom: 20px;
+
+    .content-left {
+      width: 50%;
+    }
+    .content-right {
+      width: 50%;
+    }
+  }
+
   .detail-infor-doctor {
     padding: 20px 175px;
     background-color: #f9f9f9;
